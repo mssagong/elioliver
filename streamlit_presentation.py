@@ -2,16 +2,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 import requests
 from bs4 import BeautifulSoup
-
-import pandas as pd
-from datetime import datetime
-import time
-import re
 
 import streamlit as st
 
@@ -72,4 +65,4 @@ elif df.loc[query1, query2] >= 0.6 and df.loc[query1, query3] < 0.6:
 elif df.loc[query1, query2] < 0.6 and df.loc[query1, query3] >= 0.6:
   st.write("Highly recommend " + query3 + "!")
 else:
-  st.write("You know, these are not the only ones the entertainment industry has prepared for you.")
+  st.write("You know, these are not the only ones the entertainment industry has prepared for you. Try another one.")
