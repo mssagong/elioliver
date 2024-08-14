@@ -1,4 +1,3 @@
-!pip install scikit-learn
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
@@ -6,8 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-!pip install xlrd
-!pip install openpyxl
 import requests
 from bs4 import BeautifulSoup
 
