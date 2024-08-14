@@ -56,7 +56,7 @@ pd.DataFrame(result)
 df = pd.DataFrame(cosine_similarity(np.asarray(result), np.asarray(result)))
 df.columns = [query1, query2, query3]
 df.index = [query1, query2, query3]
-st.dataframe(df)
+st.write(df)
 
 if df.loc[query1, query2] >= 0.6 and df.loc[query1, query3] >= 0.6:
   st.write("We recommend both " + query2 + " & " + query3 + "!")
