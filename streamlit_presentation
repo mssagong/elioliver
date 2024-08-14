@@ -1,0 +1,76 @@
+!pip install scikit-learn
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+!pip install xlrd
+!pip install openpyxl
+import requests
+from bs4 import BeautifulSoup
+
+import pandas as pd
+from datetime import datetime
+import time
+import re
+
+query1 = input('Your taste of film/tv series/artist? (e.g. Call Me By Your Name (film)): ')
+url = "https://en.wikipedia.org/wiki/" + query1.replace(' ','_')
+
+headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
+web = requests.get(url, headers=headers).content
+source = BeautifulSoup(web, 'html.parser')
+text1 = source.find('div', {'class':'mw-content-ltr mw-parser-output'}).get_text()
+text1 = text1.replace('\n','')
+text1 = text1.replace('\r','')
+text1 = text1.replace('\'','')
+text1 = text1.replace('^','')
+text1 = text1.strip()
+
+query2 = input('See if it matches (e.g. La La Land): ')
+url = "https://en.wikipedia.org/wiki/" + query2.replace(' ','_')
+
+headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
+web = requests.get(url, headers=headers).content
+source = BeautifulSoup(web, 'html.parser')
+text2 = source.find('div', {'class':'mw-content-ltr mw-parser-output'}).get_text()
+text2 = text2.replace('\n','')
+text2 = text2.replace('\r','')
+text2 = text2.replace('\'','')
+text2 = text2.replace('^','')
+text2 = text2.strip()
+
+query3 = input('and (e.g. NewJeans): ')
+url = "https://en.wikipedia.org/wiki/" + query3.replace(' ','_')
+
+headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
+web = requests.get(url, headers=headers).content
+source = BeautifulSoup(web, 'html.parser')
+text3 = source.find('div', {'class':'mw-content-ltr mw-parser-output'}).get_text()
+text3 = text3.replace('\n','')
+text3 = text3.replace('\r','')
+text3 = text3.replace('\'','')
+text3 = text3.replace('^','')
+text3 = text3.strip()
+
+corpus = [text1, text2, text3]
+vectorizer = TfidfVectorizer()
+result = vectorizer.fit_transform(corpus).todense()
+
+pd.DataFrame(result)
+
+df = pd.DataFrame(cosine_similarity(np.asarray(result), np.asarray(result)))
+df.columns = [query1, query2, query3]
+df.index = [query1, query2, query3]
+display(df)
+
+if df.loc[query1, query2] >= 0.6 and df.loc[query1, query3] >= 0.6:
+  print("We recommend both " + query2 + " & " + query3 + "!")
+elif df.loc[query1, query2] >= 0.6 and df.loc[query1, query3] < 0.6:
+  print("Highly recommend " + query2 + "!")
+elif df.loc[query1, query2] < 0.6 and df.loc[query1, query3] >= 0.6:
+  print("Highly recommend " + query3 + "!")
+else:
+  print("You know, these are not the only ones the entertainment industry has prepared for you.")
