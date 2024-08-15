@@ -8,10 +8,10 @@ from bs4 import BeautifulSoup
 
 import streamlit as st
 
-st.title("The app title")
-st.header("This is a header")
-st.subheader("This is a subheader")
-st.caption("This is a caption")
+st.title("ConTinder")
+st.header("Tinder, but for your taste in film, TV series, songs or artists")
+st.subheader("created by Minseung Sagong as a part of personal project portfolio")
+st.caption("No need to let algorithm learn you; no need to watch or listen anything beforehand; introducing a simple indicator if your pick will worth your time!")
 st.divider()
 
 query1 = st.text_input("Which film/tv series/artist describes you the most?", placeholder="e.g. Call Me By Your Name (film)")
@@ -57,7 +57,7 @@ corpus = [text1, text2, text3]
 vectorizer = TfidfVectorizer()
 result = vectorizer.fit_transform(corpus).todense()
 
-pd.DataFrame(result)
+st.divider()
 
 df = pd.DataFrame(cosine_similarity(np.asarray(result), np.asarray(result)))
 df.columns = [query1, query2, query3]
