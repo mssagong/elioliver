@@ -62,7 +62,9 @@ pd.DataFrame(result)
 df = pd.DataFrame(cosine_similarity(np.asarray(result), np.asarray(result)))
 df.columns = [query1, query2, query3]
 df.index = [query1, query2, query3]
-st.write(df)
+# st.write(df)
+st.metric("Similarity with " + query2, str(round(df.loc[query1, query2] * 100, 1)) + "%", str(round((df.loc[query1, query2]-df.loc[query1, query3]) * 100, 1)) + "%")
+st.metric("Similarity with " + query3, str(round(df.loc[query1, query3] * 100, 1)) + "%", str(round((df.loc[query1, query3]-df.loc[query1, query2]) * 100, 1)) + "%")
 
 if df.loc[query1, query2] >= 0.6 and df.loc[query1, query3] >= 0.6:
   st.write("We recommend both " + query2 + " & " + query3 + "!")
@@ -73,5 +75,4 @@ elif df.loc[query1, query2] < 0.6 and df.loc[query1, query3] >= 0.6:
 else:
   st.write("You know, these are not the only ones the entertainment industry has prepared for you. Try another one.")
 
-st.metric("Similarity with " + query2, str(round(df.loc[query1, query2] * 100, 1)) + "%")
-st.metric("Similarity with " + query3, str(round(df.loc[query1, query3] * 100, 1)) + "%")
+
