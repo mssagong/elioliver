@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 import streamlit as st
 
 st.title("ConTinder")
-st.header("Tinder, but for your taste in film, TV series, songs or artists")
+st.header("Tinder, but for your taste in *any* contents in the world")
 st.subheader("created by Minseung Sagong as a part of personal project portfolio")
 st.caption("No need to let algorithm learn you; no need to watch or listen anything beforehand; introducing a simple indicator if your pick will worth your time!")
 st.divider()
