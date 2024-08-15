@@ -66,11 +66,11 @@ st.metric("Similarity with " + query2, str(round(df.loc[query1, query2] * 100, 1
 st.metric("Similarity with " + query3, str(round(df.loc[query1, query3] * 100, 1)) + "%", str(round((df.loc[query1, query3]-df.loc[query1, query2]) * 100, 1)) + "%")
 
 if df.loc[query1, query2] >= 0.6 and df.loc[query1, query3] >= 0.6:
-  st.write("We recommend both " + query2 + " & " + query3 + "!")
+  st.write("Both are your matches: " + query2 + " & " + query3 + "! Up to you then.")
 elif df.loc[query1, query2] >= 0.6 and df.loc[query1, query3] < 0.6:
-  st.write("Highly recommend " + query2 + "!")
+  st.write(query2 + ", it's a match!")
 elif df.loc[query1, query2] < 0.6 and df.loc[query1, query3] >= 0.6:
-  st.write("Highly recommend " + query3 + "!")
+  st.write(query3 + ", it's a match!")
 else:
   st.write("You know, these are not the only ones the entertainment industry has prepared for you. Try another one.")
 
