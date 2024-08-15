@@ -63,8 +63,8 @@ df = pd.DataFrame(cosine_similarity(np.asarray(result), np.asarray(result)))
 df.columns = [query1, query2, query3]
 df.index = [query1, query2, query3]
 # st.write(df)
-st.metric("You will like " + query2, str(round(df.loc[query1, query2] * 100, 1)) + "%", str(round((df.loc[query1, query2]-df.loc[query1, query3]) * 100, 1)) + "%")
-st.metric("You won't regret watching " + query3, str(round(df.loc[query1, query3] * 100, 1)) + "%", str(round((df.loc[query1, query3]-df.loc[query1, query2]) * 100, 1)) + "%")
+st.metric("You will like " + query2 + " at", str(round(df.loc[query1, query2] * 100, 1)) + "%", str(round((df.loc[query1, query2]-df.loc[query1, query3]) * 100, 1)) + "%")
+st.metric("You won't regret choosing " + query3 + " at", str(round(df.loc[query1, query3] * 100, 1)) + "%", str(round((df.loc[query1, query3]-df.loc[query1, query2]) * 100, 1)) + "%")
 
 if df.loc[query1, query2] >= 0.6 and df.loc[query1, query3] >= 0.6:
   st.write("Both are your matches: " + query2 + " & " + query3 + "! Up to you then.")
