@@ -73,6 +73,5 @@ elif df.loc[query1, query2] < 0.6 and df.loc[query1, query3] >= 0.6:
 else:
   st.write("You know, these are not the only ones the entertainment industry has prepared for you. Try another one.")
 
-col1, col2 = st.columns(2)
-col1.metric("Similarity with " + query2, str(round(df.loc[query1, query2] * 100, 1)) + "%")
-col2.metric("Similarity with " + query3, str(round(df.loc[query1, query3] * 100, 1)) + "%")
+st.metric("Similarity with " + query2, str(round(df.loc[query1, query2] * 100, 1)) + "%")
+st.metric("Similarity with " + query3, str(round(df.loc[query1, query3] * 100, 1)) + "%")
