@@ -11,7 +11,7 @@ import streamlit as st
 st.title("ConTinder: See if it matches")
 st.header("Tinder, but for your taste in *any* contents in the world")
 st.caption("No need to let algorithm learn you; no need to watch or listen anything beforehand; introducing a simple indicator if your pick will worth your time!")
-st.subheader("Type in titles or names in Wikipedia format for higher accuracy."
+st.subheader("Type in titles or names in Wikipedia format for higher accuracy.")
 st.divider()
 
 query1 = st.text_input("Which film/tv series/artist describes you the most?", placeholder="e.g. Call Me By Your Name (film)")
