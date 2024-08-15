@@ -8,9 +8,8 @@ from bs4 import BeautifulSoup
 
 import streamlit as st
 
-st.title("ConTinder")
+st.title("ConTinder: See if it matches")
 st.header("Tinder, but for your taste in *any* contents in the world")
-st.caption("created by Minseung Sagong as a part of personal project portfolio")
 st.caption("No need to let algorithm learn you; no need to watch or listen anything beforehand; introducing a simple indicator if your pick will worth your time!")
 st.divider()
 
@@ -75,4 +74,5 @@ elif df.loc[query1, query2] < 0.6 and df.loc[query1, query3] >= 0.6:
 else:
   st.write("You know, these are not the only ones the entertainment industry has prepared for you. Try another one.")
 
-
+st.divider()
+st.caption("created by Minseung Sagong as a part of personal project portfolio")
