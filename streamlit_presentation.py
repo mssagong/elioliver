@@ -8,6 +8,12 @@ from bs4 import BeautifulSoup
 
 import streamlit as st
 
+st.title("The app title")
+st.header("This is a header")
+st.subheader("This is a subheader")
+st.caption("This is a caption")
+st.divider()
+
 query1 = st.text_input("Which film/tv series/artist describes you the most?", placeholder="e.g. Call Me By Your Name (film)")
 url = "https://en.wikipedia.org/wiki/" + query1.replace(' ','_')
 
@@ -66,3 +72,7 @@ elif df.loc[query1, query2] < 0.6 and df.loc[query1, query3] >= 0.6:
   st.write("Highly recommend " + query3 + "!")
 else:
   st.write("You know, these are not the only ones the entertainment industry has prepared for you. Try another one.")
+
+col1, col2 = st.columns(2)
+col1.metric("Similarity with " + query2, str(round(df.loc[query1, query2] * 100, 1)) + "%")
+col2.metric("Similarity with " + query3, str(round(df.loc[query1, query3] * 100, 1)) + "%")
