@@ -11,6 +11,7 @@ import streamlit as st
 st.title("ConTinder: See if it matches")
 st.header("Tinder, but for your taste in *any* contents in the world")
 st.caption("No need to let algorithm learn you; no need to watch or listen anything beforehand; introducing a simple indicator if your pick will worth your time!")
+st.subheader("Type in titles or names in Wikipedia format for higher accuracy."
 st.divider()
 
 query1 = st.text_input("Which film/tv series/artist describes you the most?", placeholder="e.g. Call Me By Your Name (film)")
@@ -62,8 +63,8 @@ df = pd.DataFrame(cosine_similarity(np.asarray(result), np.asarray(result)))
 df.columns = [query1, query2, query3]
 df.index = [query1, query2, query3]
 # st.write(df)
-st.metric("Similarity with " + query2, str(round(df.loc[query1, query2] * 100, 1)) + "%", str(round((df.loc[query1, query2]-df.loc[query1, query3]) * 100, 1)) + "%")
-st.metric("Similarity with " + query3, str(round(df.loc[query1, query3] * 100, 1)) + "%", str(round((df.loc[query1, query3]-df.loc[query1, query2]) * 100, 1)) + "%")
+st.metric("You will like " + query2, str(round(df.loc[query1, query2] * 100, 1)) + "%", str(round((df.loc[query1, query2]-df.loc[query1, query3]) * 100, 1)) + "%")
+st.metric("You won't regret watching " + query3, str(round(df.loc[query1, query3] * 100, 1)) + "%", str(round((df.loc[query1, query3]-df.loc[query1, query2]) * 100, 1)) + "%")
 
 if df.loc[query1, query2] >= 0.6 and df.loc[query1, query3] >= 0.6:
   st.write("Both are your matches: " + query2 + " & " + query3 + "! Up to you then.")
