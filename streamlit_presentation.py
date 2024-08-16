@@ -15,7 +15,7 @@ st.subheader("Type in titles or names as in Wikipedia title format for higher ac
 st.caption("If error occurred, make sure you type in the full correct title with proper capitalization and specify literary type in parentheses.")
 st.divider()
 
-query1 = st.text_input("Which film/tv series/artist/novel/etc. describes you the most?", placeholder="e.g. Call Me By Your Name (film)")
+query1 = st.text_input("Which film/tv series/artist/novel/etc. describes you the most?", placeholder="e.g. Call Me by Your Name (film)")
 url = "https://en.wikipedia.org/wiki/" + query1.replace(' ','_')
 
 headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
