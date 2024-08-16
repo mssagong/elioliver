@@ -10,11 +10,12 @@ import streamlit as st
 
 st.title("ConTinder: See if it matches")
 st.header("Tinder, but for your taste in *any* contents in the world")
-st.caption("No need to let algorithm learn you; no need to watch or listen anything beforehand; introducing a simple indicator if your pick will worth your time!")
-st.subheader("Type in titles or names in Wikipedia format for higher accuracy.")
+st.caption("No need to let algorithm learn you; no need to watch or listen or read anything beforehand; introducing a simple indicator if your pick will worth your time!")
+st.subheader("Type in titles or names as in Wikipedia title format for higher accuracy.")
+st.caption("If error occurred, make sure you type in the full correct title with proper capitalization and specify literary type in parentheses.")
 st.divider()
 
-query1 = st.text_input("Which film/tv series/artist describes you the most?", placeholder="e.g. Call Me By Your Name (film)")
+query1 = st.text_input("Which film/tv series/artist/novel/etc. describes you the most?", placeholder="e.g. Call Me By Your Name (film)")
 url = "https://en.wikipedia.org/wiki/" + query1.replace(' ','_')
 
 headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
