@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 import streamlit as st
 
 st.title("ConTinder: See if it matches")
-st.header("Tinder, but for your taste in *any* contents in the world")
+st.header("Tinder, but for your taste in *any* content in the world")
 st.caption("No need to let algorithm learn you; no need to watch or listen or read anything beforehand; introducing a simple indicator if your pick will worth your time!")
 st.subheader("Type in titles or names as in Wikipedia title format for higher accuracy.")
 st.caption("If error occurred, make sure you type in the full correct title with proper capitalization and specify literary type in parentheses.")
